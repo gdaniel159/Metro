@@ -1,0 +1,10 @@
+.section-container {
+    background-color: #fd0;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.description {
+    width: 86px;
+    height: auto;
+}
