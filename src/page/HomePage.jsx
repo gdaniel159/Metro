@@ -87,8 +87,8 @@ export default function HomePage() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-12 d-flex justify-content-center align-items-center p-3">
-            <div className="col-md-6 mx-2 prod-images">
+          <div className="col-md-12 d-flex flex-wrap justify-content-center align-items-center p-3">
+            <div className="col-md-5 mx-2 prod-images mt-3">
               <Image
                 src={img1}
                 alt="Image"
@@ -99,7 +99,7 @@ export default function HomePage() {
                 <button className="btn btn-warning">Comprar</button>
               </div>
             </div>
-            <div className="col-md-6 mx-2 prod-images">
+            <div className="col-md-5 mx-2 prod-images mt-3">
               <Image
                 src={img2}
                 alt="Image"

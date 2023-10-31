@@ -1,25 +1,28 @@
 .section-electro {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
 }
+
+.section-electro .electro:hover {
+    cursor: pointer;
+}
+
+.section-electro .electro:hover h2 {
+    color: #ff0000;
+    transition: 0.6s ease-in-out;
+}
+
 .electro {
-    /* margin: 10px; */
     padding: 20px;
-    width: 331.55px;
-    height: 286.05px;
 }
 
 .img-elec img {
-    width: 37vh;
-    height: 28vh;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .subtitulo h2{
-    font-size: 20px;
+    font-size: 16px;
     margin: 20px 0 0;
-    font-family: Work Sans,serif;
-    /* font-size: 14px; */
     line-height: 16px;
     letter-spacing: .02em;
     text-align: center;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Sidebar } from "primereact/sidebar";
+import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 export default function NavBar() {
@@ -47,19 +48,19 @@ export default function NavBar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/electro_hogar" className="dropdown-item">
                     Electro Hogar
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Supermercado
-                  </a>
+                  <Link to="/super_mercado" className="dropdown-item">
+                    Super Mercado
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/hogar_bazar" className="dropdown-item">
                     Hogar y Bazar
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
