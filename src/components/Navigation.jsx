@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { InputText } from "primereact/inputtext";
+import { Sidebar } from "primereact/sidebar";
 import "../styles/navbar.css";
 
 export default function NavBar() {
+  const [visible, setVisible] = useState(false);
+
+  const showSidebar = (e) => {
+    e.preventDefault();
+    setVisible(true);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -39,7 +48,17 @@ export default function NavBar() {
               <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
+                    Electro Hogar
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
                     Supermercado
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Hogar y Bazar
                   </a>
                 </li>
               </ul>
@@ -58,7 +77,7 @@ export default function NavBar() {
                 </a>
               </div>
               <div>
-                <a href="" className="d-flex flex-column">
+                <a href="" className="d-flex flex-column" onClick={showSidebar}>
                   <i className="pi pi-user" />
                   <small>Mi Cuenta</small>
                 </a>
@@ -73,6 +92,10 @@ export default function NavBar() {
           </ul>
         </div>
       </div>
+      {/* Login */}
+      <Sidebar visible={visible} onHide={() => setVisible(false)} fullScreen>
+        <h2>Login</h2>
+      </Sidebar>
     </nav>
   );
 }
