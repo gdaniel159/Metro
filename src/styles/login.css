@@ -2,36 +2,3 @@
     text-align: center;
     color: #74780f;
 }
-
-.login-form>input[type="text"],
-.login-form>input[type="email"],
-.login-form>input[type="password"] {
-    width: 94%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.login-form>input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #d7e64f;
-    border: none;
-    color: rgb(66, 49, 49);
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-form>input[type="submit"]:hover {
-    background-color: #FF8C00;
-}
-
-.login-form,
-.register-form {
-    display: none;
-}
-
-.active {
-    display: block;
-}

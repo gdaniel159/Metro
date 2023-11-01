@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 import { Sidebar } from "primereact/sidebar";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import "../styles/login.css";
-import "../scripts/toggle.js";
+
 export default function NavBar() {
+
+  const [valuePassLog, setValuePassLog] = useState("");
+
   const [visible, setVisible] = useState(false);
 
   const showSidebar = (e) => {
@@ -49,17 +53,17 @@ export default function NavBar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/electro_hogar" classNameName="dropdown-item">
+                  <Link to="/electro_hogar" className="dropdown-item">
                     Electro Hogar
                   </Link>
                 </li>
                 <li>
-                  <Link to="/super_mercado" classNameName="dropdown-item">
+                  <Link to="/super_mercado" className="dropdown-item">
                     Super Mercado
                   </Link>
                 </li>
                 <li>
-                  <Link to="/hogar_bazar" classNameName="dropdown-item">
+                  <Link to="/hogar_bazar" className="dropdown-item">
                     Hogar y Bazar
                   </Link>
                 </li>
@@ -68,10 +72,7 @@ export default function NavBar() {
             <li className="nav-item w-5">
               <span className="p-input-icon-left w-100">
                 <i className="pi pi-search" />
-                <InputText
-                  placeholder="¿Qué buscas hoy?"
-                  classNameName="w-100"
-                />
+                <InputText placeholder="¿Qué buscas hoy?" className="w-100" />
               </span>
             </li>
             <li className="nav-item text-center flex">
@@ -100,72 +101,37 @@ export default function NavBar() {
       {/* Login */}
       <Sidebar visible={visible} onHide={() => setVisible(false)} fullScreen>
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h2 className="title-login">Inicio de Sesión y Registro</h2>
-              <form id="login" className="login-form active">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo Electrónico"
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  id="login-password"
-                  placeholder="Contraseña"
-                  required
-                />
-                <input
-                  type="checkbox"
-                  onClick="togglePasswordVisibility('login-password')"
-                />{" "}
-                Mostrar contraseña
-                <input type="submit" value="Iniciar Sesión" />
-              </form>
-              <form id="register" className="register-form">
-                <input
-                  type="text"
-                  name="nombre"
-                  placeholder="Nombre"
-                  required
-                />
-                <input
-                  type="text"
-                  name="apellido"
-                  placeholder="Apellido"
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo"
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  id="register-password"
-                  placeholder="Contraseña"
-                  required
-                />
-                <input
-                  type="checkbox"
-                  onClick="togglePasswordVisibility('register-password')"
-                />{" "}
-                Mostrar contraseña
-                <input type="submit" value="Registrarse" />
-              </form>
-              <p>
-                <a href="#" onClick="toggleForm('login');">
-                  Iniciar Sesión
-                </a>{" "}
-                |{" "}
-                <a href="#" onClick="toggleForm('register');">
-                  Registrarse
-                </a>
-              </p>
+          <div className="row d-flex justify-content-center align-items-center flex-column" style={{height:"80vh"}}>
+            <h2 className="title-login">Inicio de Sesión y Registro</h2>
+            <div className="col-md-12 mt-5">
+              <div className="col-md-6 m-auto">
+                <div className="card p-4">
+                  <form id="login" className="login-form active">
+                    <div className="flex flex-column gap-2 mb-3">
+                      <label htmlFor="correo">Correo</label>
+                      <InputText id="correo" aria-describedby="correo-help" />
+                      <small id="correo-help">
+                        Ingresa tu correo electronico.
+                      </small>
+                    </div>
+                    <div className="flex flex-column gap-2 mb-3">
+                      <label htmlFor="password">Contraseña</label>
+                      <Password
+                        value={valuePassLog}
+                        onChange={(e) => setValuePassLog(e.target.value)}
+                        feedback={false}
+                        tabIndex={1}
+                      />
+                      <small id="password-help">Ingresa tu contraseña.</small>
+                    </div>
+                    <input
+                      type="submit"
+                      value="Iniciar Sesión"
+                      className="btn btn-primary form-control"
+                    />
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -10,3 +10,7 @@
 .navbar .nav-item a:hover {
     cursor: pointer;
 }
+
+.p-inputtext {
+    width: 100%;
+}
