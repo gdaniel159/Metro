@@ -7,6 +7,7 @@ import tel from "../assets/images/phone_icon.svg";
 import wash from "../assets/images/wash_icon.svg";
 import tv_product from "../assets/images/products/tv.jpg";
 import smarthphone from "../assets/images/products/smarthphone.png";
+import lavadora from "../assets/images/products/lavadora.jpg";
 import CardProduct from "../components/CardProduct";
 import "../styles/electrohogar.css";
 
@@ -49,19 +50,19 @@ export default function ElectroTecnologia() {
 
   const productsWash = [
     {
-      src: "",
-      name: "",
-      price: "",
+      src: lavadora,
+      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
+      price: "1899.00",
     },
     {
-      src: "",
-      name: "",
-      price: "",
+      src: lavadora,
+      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
+      price: "1899.00",
     },
     {
-      src: "",
-      name: "",
-      price: "",
+      src: lavadora,
+      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
+      price: "1899.00",
     },
   ];
 
