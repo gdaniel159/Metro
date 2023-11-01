@@ -1,8 +1,12 @@
 import { Carousel } from "primereact/carousel";
 import PropTypes from "prop-types";
+import "../styles/main.css";
 
-export default function CardProduct({ imgSrcSecction, descProductSection, product }) {
-
+export default function CardProduct({
+  imgSrcSecction,
+  descProductSection,
+  product,
+}) {
   const productTemplate = (product) => {
     return (
       <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
@@ -11,7 +15,7 @@ export default function CardProduct({ imgSrcSecction, descProductSection, produc
         </div>
         <div>
           <p className="mb-1 text-muted">{product.name}</p>
-          <h6 className="mt-0 mb-3">${product.price}</h6>
+          <h6 className="mt-0 mb-3">S/. {product.price}</h6>
           <button className="btn btn-warning form-control">Agregar</button>
         </div>
       </div>
@@ -30,17 +34,15 @@ export default function CardProduct({ imgSrcSecction, descProductSection, produc
               width="70"
             />
             <p>{descProductSection}</p>
-            <button>Ver Todo</button>
+            <button className="btnSee">Ver Todo</button>
           </div>
           <div className="col-md-8">
-            <div className="card">
-              <Carousel
-                value={product}
-                numVisible={3}
-                numScroll={3}
-                itemTemplate={productTemplate}
-              />
-            </div>
+            <Carousel
+              value={product}
+              numVisible={3}
+              numScroll={3}
+              itemTemplate={productTemplate}
+            />
           </div>
         </div>
       </div>

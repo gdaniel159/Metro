@@ -2,67 +2,68 @@ import tv from "../assets/images/tv.jpg";
 import com from "../assets/images/com-tel.jpg";
 import linea from "../assets/images/refri-coc.jpg";
 import electro from "../assets/images/elec.jpg";
-import pc from "../assets/images/pc_icon.svg"
-import tel from "../assets/images/phone_icon.svg"
-import wash from "../assets/images/wash_icon.svg"
+import pc from "../assets/images/pc_icon.svg";
+import tel from "../assets/images/phone_icon.svg";
+import wash from "../assets/images/wash_icon.svg";
+import tv_product from "../assets/images/products/tv.jpg";
+import smarthphone from "../assets/images/products/smarthphone.png";
 import CardProduct from "../components/CardProduct";
 import "../styles/electrohogar.css";
 
 export default function ElectroTecnologia() {
-
   const productsPC = [
     {
-      src:"",
-      name:"Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
-      price : "949.00"
+      src: tv_product,
+      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
+      price: "949.00",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: tv_product,
+      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
+      price: "949.00",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: tv_product,
+      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
+      price: "949.00",
     },
-  ]
+  ];
 
   const productsSmart = [
     {
-      src:"",
-      name:"",
-      price : ""
+      src: smarthphone,
+      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
+      price: "399.00",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: smarthphone,
+      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
+      price: "399.00",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: smarthphone,
+      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
+      price: "399.00",
     },
-  ]
+  ];
 
   const productsWash = [
     {
-      src:"",
-      name:"",
-      price : ""
+      src: "",
+      name: "",
+      price: "",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: "",
+      name: "",
+      price: "",
     },
     {
-      src:"",
-      name:"",
-      price : ""
+      src: "",
+      name: "",
+      price: "",
     },
-  ]
+  ];
 
   return (
     <>
@@ -105,10 +106,21 @@ export default function ElectroTecnologia() {
         </div>
       </div>
 
-      <CardProduct imgSrcSecction={pc} descProductSection="TV VIDEO Y AUDIO" product={productsPC} />
-      <CardProduct imgSrcSecction={tel} descProductSection="TV VIDEO Y AUDIO" product={productsSmart} />
-      <CardProduct imgSrcSecction={wash} descProductSection="TV VIDEO Y AUDIO" product={productsWash} />
-
+      <CardProduct
+        imgSrcSecction={pc}
+        descProductSection="TV VIDEO Y AUDIO"
+        product={productsPC}
+      />
+      <CardProduct
+        imgSrcSecction={tel}
+        descProductSection="CÓMPUTO Y TELEFONÍA"
+        product={productsSmart}
+      />
+      <CardProduct
+        imgSrcSecction={wash}
+        descProductSection="LÍNEA BLANCA"
+        product={productsWash}
+      />
     </>
   );
 }
