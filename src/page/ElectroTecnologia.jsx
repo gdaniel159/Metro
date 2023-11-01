@@ -5,8 +5,65 @@ import electro from "../assets/images/elec.jpg";
 import pc from "../assets/images/pc_icon.svg"
 import tel from "../assets/images/phone_icon.svg"
 import wash from "../assets/images/wash_icon.svg"
+import CardProduct from "../components/CardProduct";
 import "../styles/electrohogar.css";
+
 export default function ElectroTecnologia() {
+
+  const productsPC = [
+    {
+      src:"",
+      name:"Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
+      price : "949.00"
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+  ]
+
+  const productsSmart = [
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+  ]
+
+  const productsWash = [
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+    {
+      src:"",
+      name:"",
+      price : ""
+    },
+  ]
+
   return (
     <>
       <div className="container">
@@ -48,18 +105,9 @@ export default function ElectroTecnologia() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 d-flex">
-            <div className="col-md-4">
-              <img src={pc} alt="pc-icon" className="img-fluid" />
-            </div>
-            <div className="col-md-8">
-
-            </div>
-          </div>
-        </div>
-      </div>
+      <CardProduct imgSrcSecction={pc} descProductSection="TV VIDEO Y AUDIO" product={productsPC} />
+      <CardProduct imgSrcSecction={tel} descProductSection="TV VIDEO Y AUDIO" product={productsSmart} />
+      <CardProduct imgSrcSecction={wash} descProductSection="TV VIDEO Y AUDIO" product={productsWash} />
 
     </>
   );
