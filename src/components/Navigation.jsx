@@ -3,7 +3,8 @@ import { InputText } from "primereact/inputtext";
 import { Sidebar } from "primereact/sidebar";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
-
+import "../styles/login.css";
+import "../scripts/toggle.js";
 export default function NavBar() {
   const [visible, setVisible] = useState(false);
 
@@ -95,8 +96,27 @@ export default function NavBar() {
       </div>
       {/* Login */}
       <Sidebar visible={visible} onHide={() => setVisible(false)} fullScreen>
-        <h2>Login</h2>
+        <div class="container">
+          <h2>Inicio de Sesión y Registro</h2>
+          <form id="login" class="login-form active">
+            <input type="email" name="email" placeholder="Correo Electrónico" required />
+            <input type="password" name="password" id="login-password" placeholder="Contraseña" required />
+            <input type="checkbox" onclick="togglePasswordVisibility('login-password')" /
+            > Mostrar contraseña
+            <input type="submit" value="Iniciar Sesión" />
+          </form>
+          <form id="register" class="register-form" >
+            <input type="text" name="nombre" placeholder="Nombre" required />
+            <input type="text" name="apellido" placeholder="Apellido" required />
+            <input type="email" name="email" placeholder="Correo" required />
+            <input type="password" name="password" id="register-password" placeholder="Contraseña" required />
+            <input type="checkbox" onclick="togglePasswordVisibility('register-password')" /> Mostrar contraseña
+            <input type="submit" value="Registrarse" />
+          </form>
+          <p><a href="#" onclick="toggleForm('login');">Iniciar Sesión</a> | <a href="#"
+            onclick="toggleForm('register');">Registrarse</a></p>
+        </div>
       </Sidebar>
-    </nav>
+    </nav >
   );
 }
