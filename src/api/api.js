@@ -28,9 +28,39 @@ export const getProducts = () => {
 
 // == POST == //
 
+// Structure //
+
+/*
+
+  export const storeSomething = (newSomething) => {
+    return metroAPI.post(`/customer/create`,newSomething);
+  }
+
+*/
+
 // == PUT == //
 
+// Structure //
+
+/*
+
+  export const updateSomething = (id, updatedData) => {
+    return metroAPI.put(`/customer/update/${id}`,updatedData);
+  }
+
+*/
+
 // == DELETE == //
+
+// Structure //
+
+/*
+
+  export const deleteSomething = (id) => {
+    return metroAPI.delete(`/customer/delete/${id}`);
+  }
+
+*/
 
 // == LOGIN == //
 

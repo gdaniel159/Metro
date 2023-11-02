@@ -12,7 +12,7 @@ export default function Customers() {
     }
     setTimeout(() => {
       loadCustomers();
-    }, 1000);
+    }, 2000);
   });
   return (
     <>
