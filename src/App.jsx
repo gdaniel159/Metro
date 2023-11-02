@@ -9,6 +9,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
+import Admin from "./page/Admin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/electro_hogar" element={<ElectroTecnologia />} />
           <Route path="/super_mercado" element={<SuperMercado />} />
           <Route path="/hogar_bazar" element={<HogarBazar />} />
+          <Route path="/intranet/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </>

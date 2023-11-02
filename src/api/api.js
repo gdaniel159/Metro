@@ -7,5 +7,5 @@ const metroAPI = axios.create({
 // == LOGIN == //
 
 export const login = (userData) => {
-  return metroAPI.post("login", userData);
+  return metroAPI.post("user/login", userData);
 };

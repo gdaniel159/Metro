@@ -1,16 +1,63 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Sidebar } from "primereact/sidebar";
 import { Link } from "react-router-dom";
+import { Button } from "primereact/button";
+import { login } from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { Toast } from "primereact/toast";
 import "../styles/navbar.css";
 import "../styles/login.css";
 
 export default function NavBar() {
+  const navigate = useNavigate();
 
-  const [valuePassLog, setValuePassLog] = useState("");
+  const toast = useRef(null);
+
+  const showError = () => {
+    toast.current.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Credenciales Incorrectas",
+      life: 3000,
+    });
+  };
 
   const [visible, setVisible] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+
+      const response = await login(formData);
+      
+      if (
+        response.data.message === "Inicio de sesión exitoso" ||
+        response.data.verification_code === 1
+      ) {
+        navigate("/intranet/admin");
+      } else {
+        console.log("Credenciales Incorrectas");
+      }
+    
+    } catch (error) {
+      showError();
+    }
+  };
 
   const showSidebar = (e) => {
     e.preventDefault();
@@ -101,15 +148,27 @@ export default function NavBar() {
       {/* Login */}
       <Sidebar visible={visible} onHide={() => setVisible(false)} fullScreen>
         <div className="container">
-          <div className="row d-flex justify-content-center align-items-center flex-column" style={{height:"80vh"}}>
+          <div
+            className="row d-flex justify-content-center align-items-center flex-column"
+            style={{ height: "80vh" }}
+          >
             <h2 className="title-login">Inicio de Sesión y Registro</h2>
             <div className="col-md-12 mt-5">
               <div className="col-md-6 m-auto">
                 <div className="card p-4">
+                  <Toast ref={toast} />
                   <form id="login" className="login-form active">
                     <div className="flex flex-column gap-2 mb-3">
                       <label htmlFor="correo">Correo</label>
-                      <InputText id="correo" aria-describedby="correo-help" />
+                      <InputText
+                        id="email"
+                        name="email"
+                        aria-describedby="email-help-login"
+                        keyfilter="email"
+                        placeholder="Ingrese Correo"
+                        value={formData.correo}
+                        onChange={handleChange}
+                      />
                       <small id="correo-help">
                         Ingresa tu correo electronico.
                       </small>
@@ -117,17 +176,20 @@ export default function NavBar() {
                     <div className="flex flex-column gap-2 mb-3">
                       <label htmlFor="password">Contraseña</label>
                       <Password
-                        value={valuePassLog}
-                        onChange={(e) => setValuePassLog(e.target.value)}
                         feedback={false}
                         tabIndex={1}
+                        placeholder="Contraseña"
+                        toggleMask
+                        value={formData.password}
+                        onChange={handleChange}
+                        name="password"
                       />
                       <small id="password-help">Ingresa tu contraseña.</small>
                     </div>
-                    <input
-                      type="submit"
-                      value="Iniciar Sesión"
-                      className="btn btn-primary form-control"
+                    <Button
+                      label="Iniciar Sesion"
+                      className="btn btn-primary mb-3 form-control"
+                      onClick={handleLogin}
                     />
                   </form>
                 </div>
