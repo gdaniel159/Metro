@@ -1,11 +1,24 @@
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { useState } from "react";
+
 export default function CreateForm() {
-    return (
+  const [products, setProducts] = useState([]);
 
-        <>
-
-            <h1>Lista de todos los registros en la BD</h1>
-        
-        </>
-
-    );
+  return (
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <DataTable value={products}>
+              <Column field="code" header="Code"></Column>
+              <Column field="name" header="Name"></Column>
+              <Column field="category" header="Category"></Column>
+              <Column field="quantity" header="Quantity"></Column>
+            </DataTable>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
