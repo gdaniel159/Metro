@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Checkbox } from 'primereact/checkbox';
 import { getEmployees } from "../api/api";
 
 export default function Employees() {
   const [employees, setEmployees] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     async function loadEmployees() {
@@ -22,6 +24,11 @@ export default function Employees() {
         <div className="row">
           <div className="col-md-12 scrollable-datatable">
             <DataTable value={employees} style={{ minHeight: "400px" }}>
+              <Column
+                header="Accion"
+                body={() => <Checkbox onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>}
+                className="text-center"
+              ></Column>
               <Column field="id" header="ID"></Column>
               <Column field="nombre" header="Nombre"></Column>
               <Column field="apellido" header="Apellido"></Column>
