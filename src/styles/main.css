@@ -102,3 +102,11 @@
   overflow-x: auto;
   overflow-y: auto;
 }
+
+.p-menuitem-link {
+  text-decoration: none !important;
+}
+
+.p-menubar-root-list {
+  margin-bottom: 0;
+}

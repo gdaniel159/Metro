@@ -1,11 +1,20 @@
 import Employees from "../components/Employees";
 import Customers from "../components/Customers";
 import Orders from "../components/Ordes";
-import { TabView, TabPanel } from "primereact/tabview";
 import Categories from "../components/Categories";
+import Products from "../components/Products";
+import { TabView, TabPanel } from "primereact/tabview";
+import { Menubar } from "primereact/menubar";
 import "../styles/main.css";
 
 export default function CreateForm() {
+  const items = [
+    {
+      label: "Delete",
+      icon: "pi pi-trash",
+    },
+  ];
+
   return (
     <>
       <div className="container mx-5">
@@ -13,6 +22,7 @@ export default function CreateForm() {
           className="row d-flex justify-content-center align-items-center p-3"
           style={{ height: "100vh" }}
         >
+          <Menubar model={items} />
           <div className="card">
             <TabView>
               <TabPanel header="Empleados">
@@ -25,9 +35,11 @@ export default function CreateForm() {
                 <Orders />
               </TabPanel>
               <TabPanel header="Categories">
-                <Categories/>
+                <Categories />
               </TabPanel>
-              <TabPanel header="Products"></TabPanel>
+              <TabPanel header="Products">
+                <Products />
+              </TabPanel>
             </TabView>
           </div>
         </div>

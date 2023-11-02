@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Checkbox } from "primereact/checkbox";
 import { getEmployees } from "../api/api";
 
 export default function Employees() {
-
   const [employees, setEmployees] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     async function loadEmployees() {
       const response = await getEmployees();
       setEmployees(response.data);
@@ -15,7 +15,7 @@ export default function Employees() {
     setTimeout(() => {
       loadEmployees();
     }, 1000);
-  })
+  });
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function Employees() {
                 field="fecha_nacimiento"
                 header="Fecha de nacimiento"
               ></Column>
-              <Column field="fecha_contrato" header="Fecha Contrato" ></Column>
+              <Column field="fecha_contrato" header="Fecha Contrato"></Column>
               <Column field="direccion" header="Direccion"></Column>
               <Column field="cuidad" header="Ciudad"></Column>
               <Column field="region" header="Region"></Column>
@@ -47,6 +47,12 @@ export default function Employees() {
               {/* <Column field="notas" header="Notas"></Column> */}
               <Column field="reportes" header="Reportes"></Column>
               {/* <Column field="foto_path" header="Foto"></Column> */}
+              <Column header="Accion">
+                <div className="card flex justify-content-center">
+                  <Checkbox
+                  ></Checkbox>
+                </div>
+              </Column>
             </DataTable>
           </div>
         </div>
