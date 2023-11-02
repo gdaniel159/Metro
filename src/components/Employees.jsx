@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Checkbox } from "primereact/checkbox";
 import { getEmployees } from "../api/api";
 
 export default function Employees() {
