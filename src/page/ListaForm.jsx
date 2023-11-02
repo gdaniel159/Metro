@@ -1,6 +1,5 @@
 import Employees from "../components/Employees";
 import Customers from "../components/Customers";
-import Orders from "../components/Ordes";
 import { TabView, TabPanel } from "primereact/tabview";
 
 export default function CreateForm() {
