@@ -1,23 +1,19 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
 
 export default function CategoriaForm() {
+
   const [value, setValue] = useState("");
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-  };
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12 form-container" style={{minHeight:"400px"}}>
+          <div
+            className="col-md-12 form-container"
+            style={{ minHeight: "400px" }}
+          >
             <h1>Categories</h1>
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -41,14 +37,13 @@ export default function CategoriaForm() {
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
+                <label htmlFor="foto" className="mb-2">Foto:</label>
                 <span className="p-float-label">
-                  <label htmlFor="foto">Foto:</label>
                   <input
                     type="file"
                     id="foto"
                     name="foto"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
-                    onChange={(e) => handleFileUpload(e)}
+                    accept="image/*"
                   />
                 </span>
               </div>

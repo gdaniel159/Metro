@@ -4,7 +4,6 @@ import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import "../styles/createform.css";
 
 export function EmployeesForm() {
   

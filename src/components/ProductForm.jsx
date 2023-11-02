@@ -4,14 +4,14 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 
 export default function ProductForm() {
+  
   const [value, setValue] = useState("");
-  const [value1, setValue1] = useState("");
 
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 form-container">
             <h1>Productos</h1>
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -30,6 +30,7 @@ export default function ProductForm() {
                     id="cantidad_unidad"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="cantidad_unidad">Unidades</label>
                 </span>
@@ -53,6 +54,7 @@ export default function ProductForm() {
                     mode="currency"
                     currency="USD"
                     locale="en-US"
+                    className="w-full"
                   />
                   <label htmlFor="precio_unidad">Precio/Unidades</label>
                 </span>
@@ -73,6 +75,7 @@ export default function ProductForm() {
                     id="unidades_orden"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="unidades_orden">Unidades Orden</label>
                 </span>
