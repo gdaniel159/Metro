@@ -3,8 +3,15 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 
 export default function CategoriaForm() {
-
   const [value, setValue] = useState("");
+  const [value1, setValue1] = useState("");
+
+  const [setSelectedFile] = useState(null);
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
 
   return (
     <>
@@ -29,20 +36,23 @@ export default function CategoriaForm() {
                 <span className="p-float-label">
                   <InputText
                     id="descripcion"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value1}
+                    onChange={(e) => setValue1(e.target.value)}
                   />
                   <label htmlFor="descripcion">Descripción</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
-                <label htmlFor="foto" className="mb-2">Foto:</label>
+                <label htmlFor="foto" className="mb-2">
+                  Foto:
+                </label>
                 <span className="p-float-label">
                   <input
                     type="file"
                     id="foto"
                     name="foto"
-                    accept="image/*"
+                    accept="image/*" // Esto limita la selección a archivos de imagen
+                    onChange={(e) => handleFileUpload(e)}
                   />
                 </span>
               </div>

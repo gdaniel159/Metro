@@ -7,7 +7,15 @@ import { Button } from "primereact/button";
 export default function OrdesForm() {
 
   const [value, setValue] = useState("");
-  const [date, setDate] = useState(null);
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+  const [value3, setValue3] = useState("");
+  const [value4, setValue4] = useState("");
+  const [value5, setValue5] = useState("");
+  const [value6, setValue6] = useState("");
+  const [date3, setDate3] = useState(null);
+  const [date4, setDate4] = useState(null);
+  const [date5, setDate5] = useState(null);
 
   return (
     <>
@@ -19,8 +27,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <Calendar
                     inputId="fecha_orden"
-                    value={date}
-                    onChange={(e) => setDate(e.value)}
+                    value={date3}
+                    onChange={(e) => setDate3(e.value)}
                     className="w-full"
                   />
                   <label htmlFor="fecha_orden">Fecha Orden</label>
@@ -30,8 +38,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <Calendar
                     inputId="fecha_requirimiento"
-                    value={date}
-                    onChange={(e) => setDate(e.value)}
+                    value={date4}
+                    onChange={(e) => setDate4(e.value)}
                     className="w-full"
                   />
                   <label htmlFor="fecha_requirimiento">Fecha requerido</label>
@@ -41,8 +49,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <Calendar
                     inputId="fecha_contrato"
-                    value={date}
-                    onChange={(e) => setDate(e.value)}
+                    value={date5}
+                    onChange={(e) => setDate5(e.value)}
                     className="w-full"
                   />
                   <label htmlFor="fecha_envio">Fecha de envio</label>
@@ -62,8 +70,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="transporte"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value1}
+                    onChange={(e) => setValue1(e.target.value)}
                   />
                   <label htmlFor="transporte">Transporte</label>
                 </span>
@@ -72,8 +80,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="nombre_envio"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value2}
+                    onChange={(e) => setValue2(e.target.value)}
                   />
                   <label htmlFor="nombre_envio">Nombre Envio</label>
                 </span>
@@ -82,8 +90,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="envio_direccion"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value3}
+                    onChange={(e) => setValue3(e.target.value)}
                   />
                   <label htmlFor="envio_direccion">Dirección</label>
                 </span>
@@ -92,8 +100,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="envio_region"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value4}
+                    onChange={(e) => setValue4(e.target.value)}
                   />
                   <label htmlFor="envio_region">Región</label>
                 </span>
@@ -102,8 +110,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputNumber
                     id="envio_codigo_postal"
-                    value={value}
-                    onValueChange={(e) => setValue(e.value)}
+                    value={value5}
+                    onValueChange={(e) => setValue5(e.value)}
                     className="w-full"
                   />
                   <label htmlFor="envio_codigo_postal">Código Postal</label>
@@ -113,8 +121,8 @@ export default function OrdesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="envio_pais"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={value6}
+                    onChange={(e) => setValue6(e.target.value)}
                   />
                   <label htmlFor="envio_pais">País</label>
                 </span>
