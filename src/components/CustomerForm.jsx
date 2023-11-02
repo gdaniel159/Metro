@@ -22,7 +22,6 @@ export default function CustomerForm() {
       <div className="container">
         <div className="row">
           <div className="col-md-12 form-container" style={{minHeight:"400px"}}>
-            <h1>Customeer</h1>
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">

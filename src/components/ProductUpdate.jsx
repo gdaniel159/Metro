@@ -4,15 +4,14 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 
 export default function ProductUpdate() {
+  
   const [value, setValue] = useState("");
-  const [value1, setValue1] = useState("");
 
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1>Productos</h1>
+          <div className="col-md-12 form-container">
             <form action="#" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">

@@ -14,24 +14,29 @@ export default function CreateForm() {
           className="row d-flex justify-content-center align-items-center p-3"
           style={{ height: "100vh" }}
         >
-          <div className="card">
-            <TabView>
-              <TabPanel header="Empleados">
-                <EmployeesForm />
-              </TabPanel>
-              <TabPanel header="Customers">
-                <CustomerForm />
-              </TabPanel>
-              <TabPanel header="Orders">
-                <OrdesForm />
-              </TabPanel>
-              <TabPanel header="Categories">
-                <CategoriaForm />
-              </TabPanel>
-              <TabPanel header="Products">
-                <ProductForm></ProductForm>
-              </TabPanel>
-            </TabView>
+          <div className="col-md-12">
+            <h1 className="text-muted text-center mb-3">
+              Creacion de registros
+            </h1>
+            <div className="card">
+              <TabView>
+                <TabPanel header="Empleados">
+                  <EmployeesForm />
+                </TabPanel>
+                <TabPanel header="Customers">
+                  <CustomerForm />
+                </TabPanel>
+                <TabPanel header="Orders">
+                  <OrdesForm />
+                </TabPanel>
+                <TabPanel header="Categories">
+                  <CategoriaForm />
+                </TabPanel>
+                <TabPanel header="Products">
+                  <ProductForm />
+                </TabPanel>
+              </TabView>
+            </div>
           </div>
         </div>
       </div>

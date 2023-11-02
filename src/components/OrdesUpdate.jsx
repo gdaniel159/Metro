@@ -7,28 +7,12 @@ import { Button } from "primereact/button";
 export default function OrdesUpdate() {
   const [value, setValue] = useState("");
   const [date, setDate] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
 
-  const cities = [
-    { name: "New York", code: "NY" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
-  ];
-
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-  };
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1>Orders</h1>
+          <div className="col-md-12 form-container">
             <form action="#" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">

@@ -4,9 +4,8 @@ import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import "../styles/createform.css";
 
-export function EmployeesUpdate() {
+export default function EmployeesUpdate() {
   const [value, setValue] = useState("");
   const [date, setDate] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
@@ -19,19 +18,11 @@ export function EmployeesUpdate() {
     { name: "Paris", code: "PRS" },
   ];
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-  };
-
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1>Employees</h1>
+          <div className="col-md-12 form-container">
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
@@ -170,8 +161,7 @@ export function EmployeesUpdate() {
                     type="file"
                     id="foto"
                     name="foto"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
-                    onChange={(e) => handleFileUpload(e)}
+                    accept="image/*"
                   />
                 </span>
               </div>
@@ -203,8 +193,7 @@ export function EmployeesUpdate() {
                     type="file"
                     id="foto_path"
                     name="foto_path"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
-                    onChange={(e) => handleFileUpload(e)}
+                    accept="image/*"
                   />
                 </span>
               </div>
