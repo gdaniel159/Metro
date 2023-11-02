@@ -21,6 +21,12 @@ export default function CreateForm() {
     { name: "Istanbul", code: "IST" },
     { name: "Paris", code: "PRS" },
   ];
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
 
   return (
     <>
@@ -159,10 +165,19 @@ export default function CreateForm() {
                   <label htmlFor="extension">Extensión</label>
                 </span>
               </div>
-              <div>
-                <label htmlFor="nombre">Foto:</label>
-                <input type="text" />
+              <div className="card flex justify-content-center">
+                <span className="p-float-label">
+                  <label htmlFor="foto">Foto:</label>
+                  <input
+                    type="file"
+                    id="foto"
+                    name="foto"
+                    accept="image/*" // Esto limita la selección a archivos de imagen
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                </span>
               </div>
+
               <div className="card flex justify-content-center">
                 <span className="p-float-label">
                   <InputText
@@ -183,9 +198,17 @@ export default function CreateForm() {
                   <label htmlFor="reporte">Reporte</label>
                 </span>
               </div>
-              <div>
-                <label htmlFor="nombre">Foto Path:</label>
-                <input type="text" />
+              <div className="card flex justify-content-center">
+                <span className="p-float-label">
+                  <label htmlFor="foto_path">Foto Path:</label>
+                  <input
+                    type="file"
+                    id="foto_path"
+                    name="foto_path"
+                    accept="image/*" // Esto limita la selección a archivos de imagen
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                </span>
               </div>
 
               <div className="card flex justify-content-center">
