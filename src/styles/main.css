@@ -96,3 +96,9 @@
   text-decoration: none;
   color: #6366f1;
 }
+
+.scrollable-datatable, .form-container {
+  max-height: 400px;
+  overflow-x: auto;
+  overflow-y: auto;
+}

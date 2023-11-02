@@ -2,6 +2,7 @@ import { TabView, TabPanel } from "primereact/tabview";
 import { EmployeesForm } from "../components/EmployeesForm";
 import CustomerForm from "../components/CustomerForm";
 import CategoriaForm from "../components/CategoriaForm";
+import "../styles/main.css";
 
 export default function CreateForm() {
   return (

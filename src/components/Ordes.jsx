@@ -18,8 +18,8 @@ export default function Orders() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <DataTable value={orders}>
+          <div className="col-md-12 scrollable-datatable">
+            <DataTable value={orders} style={{ minHeight: "400px" }}>
               <Column field="id" header="ID"></Column>
               <Column field="fecha_orden" header="Fecha de Orden"></Column>
               <Column

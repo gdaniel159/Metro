@@ -20,8 +20,8 @@ export default function Categories() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <DataTable value={categories}>
+          <div className="col-md-12 scrollable-datatable">
+            <DataTable value={categories} style={{ minHeight: "400px" }}>
               <Column field="id" header="ID"></Column>
               <Column field="nombre_categoria" header="Categoria"></Column>
               <Column field="descripcion" header="Descripcion"></Column>

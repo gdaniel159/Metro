@@ -3,6 +3,7 @@ import Customers from "../components/Customers";
 import Orders from "../components/Ordes";
 import { TabView, TabPanel } from "primereact/tabview";
 import Categories from "../components/Categories";
+import "../styles/main.css";
 
 export default function CreateForm() {
   return (

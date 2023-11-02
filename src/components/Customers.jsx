@@ -18,8 +18,8 @@ export default function Customers() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <DataTable value={customers} className="">
+          <div className="col-md-12 scrollable-datatable">
+            <DataTable value={customers} style={{ minHeight: "400px" }}>
               <Column field="id" header="ID"></Column>
               <Column field="nombre_compañia" header="Compañia"></Column>
               <Column field="nombre_contacto" header="Representante"></Column>

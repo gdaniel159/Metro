@@ -7,6 +7,7 @@ import { Dropdown } from "primereact/dropdown";
 import "../styles/createform.css";
 
 export function EmployeesForm() {
+  
   const [value, setValue] = useState("");
   const [date, setDate] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
@@ -19,7 +20,7 @@ export function EmployeesForm() {
     { name: "Paris", code: "PRS" },
   ];
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [setSelectedFile] = useState(null);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -30,7 +31,10 @@ export function EmployeesForm() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div
+            className="col-md-12 form-container"
+            style={{ minHeight: "400px" }}
+          >
             <h1>Employees</h1>
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -79,6 +83,7 @@ export function EmployeesForm() {
                     inputId="fecha_nacimiento"
                     value={date}
                     onChange={(e) => setDate(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="fecha_nacimiento">Fecha Nacimiento</label>
                 </span>
@@ -89,6 +94,7 @@ export function EmployeesForm() {
                     inputId="fecha_contrato"
                     value={date}
                     onChange={(e) => setDate(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="fecha_contrato">Fecha Contrato</label>
                 </span>
@@ -110,7 +116,6 @@ export function EmployeesForm() {
                   options={cities}
                   optionLabel="name"
                   placeholder="Select a City"
-                  className="w-full md:w-14rem"
                 />
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -129,6 +134,7 @@ export function EmployeesForm() {
                     id="codigo_postal"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="codigo_postal">Código Postal</label>
                 </span>
@@ -149,6 +155,7 @@ export function EmployeesForm() {
                     id="number-input"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="number-input">Télefono</label>
                 </span>
@@ -164,8 +171,8 @@ export function EmployeesForm() {
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
+                <label htmlFor="foto" className="mb-2">Foto:</label>
                 <span className="p-float-label">
-                  <label htmlFor="foto">Foto:</label>
                   <input
                     type="file"
                     id="foto"
@@ -197,13 +204,15 @@ export function EmployeesForm() {
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
+                <label htmlFor="foto_path" className="mb-2">
+                  Foto Path:
+                </label>
                 <span className="p-float-label">
-                  <label htmlFor="foto_path">Foto Path:</label>
                   <input
                     type="file"
                     id="foto_path"
                     name="foto_path"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
+                    accept="image/*"
                     onChange={(e) => handleFileUpload(e)}
                   />
                 </span>

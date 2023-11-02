@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 
 export default function CustomerForm() {
+
     const [value, setValue] = useState("");
     const [selectedCity, setSelectedCity] = useState(null);
   
@@ -20,7 +21,7 @@ export default function CustomerForm() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 form-container" style={{minHeight:"400px"}}>
             <h1>Customeer</h1>
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -70,7 +71,6 @@ export default function CustomerForm() {
                   options={cities}
                   optionLabel="name"
                   placeholder="Select a City"
-                  className="w-full md:w-14rem"
                 />
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -89,6 +89,7 @@ export default function CustomerForm() {
                     id="codigo_postal"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="codigo_postal">Código Postal</label>
                 </span>
@@ -109,6 +110,7 @@ export default function CustomerForm() {
                     id="number-input"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="number-input">Télefono</label>
                 </span>
@@ -119,6 +121,7 @@ export default function CustomerForm() {
                     id="fax"
                     value={value}
                     onValueChange={(e) => setValue(e.value)}
+                    className="w-full"
                   />
                   <label htmlFor="fax">Fax</label>
                 </span>
