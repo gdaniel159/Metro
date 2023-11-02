@@ -19,35 +19,35 @@ export default function Admin() {
   const items = [
     {
       label: "Create",
-      icon: () => <img alt="Finder" src={create} width="100%" />,
+      icon: () => <img alt="Finder" src={create} className="img-fluid" width="70%" />,
       command: () => {
         setActiveSection("create_form");
       },
     },
     {
       label: "Update",
-      icon: () => <img alt="App Store" src={update} width="100%" />,
+      icon: () => <img alt="App Store" src={update} className="img-fluid" width="70%" />,
       command: () => {
         setActiveSection("update_form");
       },
     },
     {
       label: "Delete",
-      icon: () => <img alt="Photos" src={delete_icon} width="100%" />,
+      icon: () => <img alt="Photos" src={delete_icon} className="img-fluid" width="70%" />,
       command: () => {
         setActiveSection("delete_form");
       },
     },
     {
       label: "Lista",
-      icon: () => <img alt="Listar" src={listar} width="100%" />,
+      icon: () => <img alt="Listar" src={listar} className="img-fluid" width="70%" />,
       command: () => {
         setActiveSection("list_form");
       },
     },
     {
       label: "Cerrar Sesion",
-      icon: () => <img alt="Cerrar Sesion" src={cerrar} width="100%" />,
+      icon: () => <img alt="Cerrar Sesion" src={cerrar} className="img-fluid" width="70%" />,
       command: () => {
         navigate("/");
       },

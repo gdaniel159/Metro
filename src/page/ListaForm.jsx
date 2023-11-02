@@ -1,21 +1,30 @@
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { useState } from "react";
+import Employees from "../components/Employees";
+import Customers from "../components/Customers";
+import Orders from "../components/Ordes";
+import { TabView, TabPanel } from "primereact/tabview";
 
 export default function CreateForm() {
-  const [products, setProducts] = useState([]);
-
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <DataTable value={products}>
-              <Column field="code" header="Code"></Column>
-              <Column field="name" header="Name"></Column>
-              <Column field="category" header="Category"></Column>
-              <Column field="quantity" header="Quantity"></Column>
-            </DataTable>
+      <div className="container mx-5">
+        <div
+          className="row d-flex justify-content-center align-items-center p-3"
+          style={{ height: "100vh" }}
+        >
+          <div className="card">
+            <TabView>
+              <TabPanel header="Empleados">
+                <Employees />
+              </TabPanel>
+              <TabPanel header="Customers">
+                <Customers />
+              </TabPanel>
+              <TabPanel header="Orders">
+                <Orders />
+              </TabPanel>
+              <TabPanel header="Categories"></TabPanel>
+              <TabPanel header="Products"></TabPanel>
+            </TabView>
           </div>
         </div>
       </div>

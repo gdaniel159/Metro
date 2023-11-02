@@ -49,13 +49,12 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 .overlay-prod:hover button {
   display: block;
 }
 
 .navegacion-productos {
-  background-color:#f1f1f1;
+  background-color: #f1f1f1;
   margin: 20px 0;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -68,7 +67,7 @@
 }
 
 .navegacion-productos .col-md-4 {
-  padding:10px
+  padding: 10px;
 }
 
 .navegacion-productos .col-md-4:hover {
@@ -82,8 +81,18 @@
 .btnSee {
   background-color: #fd0;
   border: none;
-  border-radius:10px;
-  padding:5px;
+  border-radius: 10px;
+  padding: 5px;
   width: 80px;
   font-weight: 500;
+}
+
+.p-tabview-ink-bar {
+  display: none !important;
+  z-index: 1 !important;
+}
+
+.p-tabview-nav-link {
+  text-decoration: none;
+  color: #6366f1;
 }
