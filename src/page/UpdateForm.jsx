@@ -1,11 +1,23 @@
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { useState } from "react";
+
 export default function UpdateForm() {
-    return (
-
-        <>
-
-            <h1>Lista de usuarios a actualizar</h1>
-        
-        </>
-
-    );
+    const [products, setProducts] = useState([]);
+  return (
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <DataTable value={products}>
+              <Column field="code" header="Code"></Column>
+              <Column field="name" header="Name"></Column>
+              <Column field="category" header="Category"></Column>
+              <Column field="quantity" header="Quantity"></Column>
+            </DataTable>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
