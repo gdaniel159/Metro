@@ -47,12 +47,6 @@ export default function Employees() {
               {/* <Column field="notas" header="Notas"></Column> */}
               <Column field="reportes" header="Reportes"></Column>
               {/* <Column field="foto_path" header="Foto"></Column> */}
-              <Column header="Accion">
-                <div className="card flex justify-content-center">
-                  <Checkbox
-                  ></Checkbox>
-                </div>
-              </Column>
             </DataTable>
           </div>
         </div>
