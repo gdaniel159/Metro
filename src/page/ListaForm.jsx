@@ -1,6 +1,6 @@
 import Employees from "../components/Employees";
 import Customers from "../components/Customers";
-import Orders from "../components/Ordes";
+import Orders from "../components/Orders";
 import Categories from "../components/Categories";
 import Products from "../components/Products";
 import { TabView, TabPanel } from "primereact/tabview";
