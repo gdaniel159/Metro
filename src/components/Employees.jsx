@@ -1,25 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { getEmployees } from "../api/api";
 
 export default function Employees() {
-  const [employees] = useState([
-    {
-      id: "1",
-      nombre: "German Daniel",
-      apellido: "Soto Cordova",
-      titulo: "Sales Representative",
-      titulo_de_cortesia: "Dr",
-      fecha_nacimiento: "2003-12-03",
-      direccion: "Calle las flores 261",
-      ciudad: "Lima",
-      region: "Lima",
-      codigo_postal: "Lima 07",
-      pais: "PERU",
-      telefono: "926385755",
-      extension: "4541",
-    },
-  ]);
+
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() =>{
+    async function loadEmployees() {
+      const response = await getEmployees();
+      setEmployees(response.data);
+    }
+    setTimeout(() => {
+      loadEmployees();
+    }, 1000);
+  })
 
   return (
     <>
@@ -39,13 +35,18 @@ export default function Employees() {
                 field="fecha_nacimiento"
                 header="Fecha de nacimiento"
               ></Column>
+              <Column field="fecha_contrato" header="Fecha Contrato" ></Column>
               <Column field="direccion" header="Direccion"></Column>
-              <Column field="ciudad" header="Ciudad"></Column>
+              <Column field="cuidad" header="Ciudad"></Column>
               <Column field="region" header="Region"></Column>
               <Column field="codigo_postal" header="Codigo Postal"></Column>
               <Column field="pais" header="Pais"></Column>
               <Column field="telefono" header="Telefono"></Column>
-              <Column field="extension" header="Extension"></Column>
+              {/* <Column field="extension" header="Extension"></Column> */}
+              {/* <Column field="foto" header="Foto"></Column> */}
+              {/* <Column field="notas" header="Notas"></Column> */}
+              <Column field="reportes" header="Reportes"></Column>
+              {/* <Column field="foto_path" header="Foto"></Column> */}
             </DataTable>
           </div>
         </div>

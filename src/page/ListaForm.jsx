@@ -2,6 +2,7 @@ import Employees from "../components/Employees";
 import Customers from "../components/Customers";
 import Orders from "../components/Ordes";
 import { TabView, TabPanel } from "primereact/tabview";
+import Categories from "../components/Categories";
 
 export default function CreateForm() {
   return (
@@ -22,7 +23,9 @@ export default function CreateForm() {
               <TabPanel header="Orders">
                 <Orders />
               </TabPanel>
-              <TabPanel header="Categories"></TabPanel>
+              <TabPanel header="Categories">
+                <Categories/>
+              </TabPanel>
               <TabPanel header="Products"></TabPanel>
             </TabView>
           </div>
