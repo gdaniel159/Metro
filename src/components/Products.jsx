@@ -14,7 +14,7 @@ export default function Products() {
     setTimeout(() => {
       loadProducts();
     }, 1000);
-  });
+  },[]);
 
   return (
     <>

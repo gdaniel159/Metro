@@ -5,7 +5,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 
-export default function EmployeesUpdate() {
+export default function EmployeesUpdate({ employeeID }) {
   const [value, setValue] = useState("");
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
@@ -37,6 +37,11 @@ export default function EmployeesUpdate() {
     const file = e.target.files[0];
     setSelectedFile(file);
   };
+
+  const handleActualizar = (e) => {
+    e.preventDefault();
+    console.log(employeeID);
+  }
 
   return (
     <>
@@ -231,7 +236,7 @@ export default function EmployeesUpdate() {
               </div>
 
               <div className="card flex justify-content-center mb-5 mt-5">
-                <Button label="Submit" />
+                <Button label="Submit" onClick={handleActualizar} />
               </div>
             </form>
           </div>

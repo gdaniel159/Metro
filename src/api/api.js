@@ -112,6 +112,7 @@ export const deleteOrders = (id) => {
 export const deleteProducts = (id) => {
   return metroAPI.delete(`products/delete/${id}`);
 }
+
 /*
 
   export const deleteSomething = (id) => {

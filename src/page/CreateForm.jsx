@@ -1,7 +1,6 @@
 import { TabView, TabPanel } from "primereact/tabview";
 import { EmployeesForm } from "../components/EmployeesForm";
 import CustomerForm from "../components/CustomerForm";
-import OrdesForm from "../components/OrdersForm";
 import CategoriaForm from "../components/CategoriaForm";
 import ProductForm from "../components/ProductForm";
 import "../styles/main.css";
@@ -25,9 +24,6 @@ export default function CreateForm() {
                 </TabPanel>
                 <TabPanel header="Customers">
                   <CustomerForm />
-                </TabPanel>
-                <TabPanel header="Orders">
-                  <OrdesForm />
                 </TabPanel>
                 <TabPanel header="Categories">
                   <CategoriaForm />
