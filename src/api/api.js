@@ -14,8 +14,8 @@ export const getEmployees = () => {
   return metroAPI.get('employees/get');
 }
 
-export const getEmployeesxID = () => {
-  return metroAPI.get('employeeid/getEmployee/${}');
+export const getEmployeesxID = (id) => {
+  return metroAPI.get(`employeeid/getEmployee/${id}`);
 }
 export const getCustomers = () => {
   return metroAPI.get('customers/get');

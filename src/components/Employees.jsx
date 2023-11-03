@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { getEmployees } from "../api/api";
@@ -7,13 +7,15 @@ import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 import EmployeesUpdate from "./EmployeesUpdate";
 import { deleteEmployees } from "../api/api";
-import { updateEmployees } from "../api/api";
+import { EmployeeContext } from "./EmployeeProvider";
+
 
 export default function Employees() {
   const toast = useRef(null);
 
+  const { setSelectedEmployeeId } = useContext(EmployeeContext);
+
   const [visible, setVisible] = useState(false);
-  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
 
   const [employees, setEmployees] = useState([]);
 
@@ -53,42 +55,6 @@ export default function Employees() {
       });
     }
   };
-
-  const updateEmployee = async (employee, data) => {
-    try {
-      await updateEmployees(employee.id, data);
-      toast.current.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Empleado Actualizado correctamente",
-        life: 3000,
-      });
-    } catch (error) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "No se pudo actualizar los registros",
-        life: 3000,
-      });
-    }
-  };
-
-  const footerContent = (
-    <div>
-      <Button
-        label="Cancelar"
-        icon="pi pi-times"
-        onClick={() => setVisible(false)}
-        className="p-button-text"
-      />
-      <Button
-        label="Actualizar"
-        icon="pi pi-check"
-        onClick={updateEmployee}
-        autoFocus
-      />
-    </div>
-  );
 
   return (
     <>
@@ -132,22 +98,19 @@ export default function Employees() {
                       icon="pi pi-pencil"
                       className="p-button-warning w-100 mt-2"
                       onClick={() => {
-                        setSelectedEmployeeId(rowData.id), 
-                        setVisible(true);
+                        setSelectedEmployeeId(rowData.id), setVisible(true);
                       }}
                     />
                     <Dialog
                       header="Actualizar Empleados"
                       visible={visible}
                       style={{ width: "50vw" }}
-                      onHide={() => setVisible(false)}
-                      footer={footerContent}
+                      onHide={() => {
+                        setVisible(false);
+                        setSelectedEmployeeId(null);
+                      }}
                     >
-                      <EmployeesUpdate
-                        employeeID={() => {
-                          employees.id;
-                        }}
-                      />
+                      <EmployeesUpdate />
                     </Dialog>
                   </>
                 )}

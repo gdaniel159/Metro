@@ -1,42 +1,77 @@
-import { useState } from "react";
-import { Calendar } from "primereact/calendar";
+import { useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from "primereact/inputnumber";
+import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
+import { createEmployees } from "../api/api";
 
 export function EmployeesForm() {
-  
-  const [value, setValue] = useState("");
-  const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("");
-  const [value3, setValue3] = useState("");
-  const [value4, setValue4] = useState("");
-  const [value5, setValue5] = useState("");
-  const [value6, setValue6] = useState("");
-  const [value7, setValue7] = useState("");
-  const [value8, setValue8] = useState("");
-  const [value9, setValue9] = useState("");
-  const [value10, setValue10] = useState("");
-  const [value11, setValue11] = useState("");
-  
-  const [date1, setDate1] = useState(null);
-  const [date2, setDate2] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
 
-  const cities = [
-    { name: "New York", code: "NY" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
-  ];
+  const toast = useRef(null);
+  
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [titulo_de_cortesia, setTituloCortesia] = useState("");
+  const [fecha_nacimiento, setFechaNacimiento] = useState("");
+  const [fecha_contrato, setFechaContrato] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [cuidad, setCiudad] = useState("");
+  const [region, setRegion] = useState("");
+  const [pais, setPais] = useState("");
+  const [telefono, setCTelefono] = useState("");
+  const [extension, setExtension] = useState("");
+  const [notas, setNotas] = useState("");
+  const [reportes, setReportes] = useState("");
+  const [codigoPostal, setCodigoPostal] = useState("");
 
   const [setSelectedFile] = useState(null);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
+  };
+
+  const createEmployee = async (data) => {
+    try {
+      const response = await createEmployees(data);
+      console.log(response);
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Empleado Actualizado correctamente",
+        life: 3000,
+      });
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "No se pudo actualizar los registros",
+        life: 3000,
+      });
+    }
+  }
+
+  const handleCreateEmployee = (e) => {
+    e.preventDefault();
+    const formData = {
+      nombre,
+      apellido,
+      titulo,
+      titulo_de_cortesia,
+      fecha_nacimiento,
+      fecha_contrato,
+      direccion,
+      cuidad,
+      region,
+      pais,
+      telefono,
+      extension,
+      notas,
+      reportes,
+      codigoPostal,
+    };
+    console.log(formData);
+    createEmployee(formData);
   };
 
   return (
@@ -47,13 +82,14 @@ export function EmployeesForm() {
             className="col-md-12 form-container"
             style={{ minHeight: "400px" }}
           >
+            <Toast ref={toast} />
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
                     id="nombre"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
                   />
                   <label htmlFor="nombre">Nombre</label>
                 </span>
@@ -62,8 +98,8 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="apellido"
-                    value={value1}
-                    onChange={(e) => setValue1(e.target.value)}
+                    value={apellido}
+                    onChange={(e) => setApellido(e.target.value)}
                   />
                   <label htmlFor="apellido">Apellido</label>
                 </span>
@@ -72,8 +108,8 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="titulo"
-                    value={value2}
-                    onChange={(e) => setValue2(e.target.value)}
+                    value={titulo}
+                    onChange={(e) => setTitulo(e.target.value)}
                   />
                   <label htmlFor="titulo">Titulo</label>
                 </span>
@@ -82,30 +118,28 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="titulo_cortesia"
-                    value={value3}
-                    onChange={(e) => setValue3(e.target.value)}
+                    value={titulo_de_cortesia}
+                    onChange={(e) => setTituloCortesia(e.target.value)}
                   />
                   <label htmlFor="titulo_cortesia">Titulo de cortesía</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
-                  <Calendar
-                    inputId="fecha_nacimiento"
-                    value={date1}
-                    onChange={(e) => setDate1(e.value)}
-                    className="w-full"
+                  <InputText
+                    id="titulo_cortesia"
+                    value={fecha_nacimiento}
+                    onChange={(e) => setFechaNacimiento(e.target.value)}
                   />
                   <label htmlFor="fecha_nacimiento">Fecha Nacimiento</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
-                  <Calendar
-                    inputId="fecha_contrato"
-                    value={date2}
-                    onChange={(e) => setDate2(e.value)}
-                    className="w-full"
+                  <InputText
+                    id="titulo_cortesia"
+                    value={fecha_contrato}
+                    onChange={(e) => setFechaContrato(e.target.value)}
                   />
                   <label htmlFor="fecha_contrato">Fecha Contrato</label>
                 </span>
@@ -114,38 +148,35 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="direccion"
-                    value={value4}
-                    onChange={(e) => setValue4(e.target.value)}
+                    value={direccion}
+                    onChange={(e) => setDireccion(e.target.value)}
                   />
                   <label htmlFor="direccion">Dirección</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
-                <Dropdown
-                  value={selectedCity}
-                  onChange={(e) => setSelectedCity(e.value)}
-                  options={cities}
-                  optionLabel="name"
-                  placeholder="Select a City"
+                <InputText
+                  id="ciudad"
+                  value={cuidad}
+                  onChange={(e) => setCiudad(e.target.value)}
                 />
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
                     id="region"
-                    value={value5}
-                    onChange={(e) => setValue5(e.target.value)}
+                    value={region}
+                    onChange={(e) => setRegion(e.target.value)}
                   />
                   <label htmlFor="region">Región</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
-                  <InputNumber
+                  <InputText
                     id="codigo_postal"
-                    value={value6}
-                    onValueChange={(e) => setValue6(e.value)}
-                    className="w-full"
+                    value={codigoPostal}
+                    onChange={(e) => setCodigoPostal(e.target.value)}
                   />
                   <label htmlFor="codigo_postal">Código Postal</label>
                 </span>
@@ -154,19 +185,18 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="pais"
-                    value={value7}
-                    onChange={(e) => setValue7(e.target.value)}
+                    value={pais}
+                    onChange={(e) => setPais(e.target.value)}
                   />
                   <label htmlFor="pais">País</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
-                  <InputNumber
+                  <InputText
                     id="number-input"
-                    value={value8}
-                    onValueChange={(e) => setValue8(e.value)}
-                    className="w-full"
+                    value={telefono}
+                    onChange={(e) => setCTelefono(e.target.value)}
                   />
                   <label htmlFor="number-input">Télefono</label>
                 </span>
@@ -175,20 +205,22 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="extension"
-                    value={value9}
-                    onChange={(e) => setValue9(e.target.value)}
+                    value={extension}
+                    onChange={(e) => setExtension(e.target.value)}
                   />
                   <label htmlFor="extension">Extensión</label>
                 </span>
               </div>
               <div className="card flex justify-content-center mb-5 mt-5">
-                <label htmlFor="foto" className="mb-2">Foto:</label>
+                <label htmlFor="foto" className="mb-2">
+                  Foto:
+                </label>
                 <span className="p-float-label">
                   <input
                     type="file"
                     id="foto"
                     name="foto"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
+                    accept="image/*"
                     onChange={(e) => handleFileUpload(e)}
                   />
                 </span>
@@ -198,8 +230,8 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="notas"
-                    value={value10}
-                    onChange={(e) => setValue10(e.target.value)}
+                    value={notas}
+                    onChange={(e) => setNotas(e.target.value)}
                   />
                   <label htmlFor="notas">Notas</label>
                 </span>
@@ -208,8 +240,8 @@ export function EmployeesForm() {
                 <span className="p-float-label">
                   <InputText
                     id="reporte"
-                    value={value11}
-                    onChange={(e) => setValue11(e.target.value)}
+                    value={reportes}
+                    onChange={(e) => setReportes(e.target.value)}
                   />
                   <label htmlFor="reporte">Reporte</label>
                 </span>
@@ -230,7 +262,7 @@ export function EmployeesForm() {
               </div>
 
               <div className="card flex justify-content-center mb-5 mt-5">
-                <Button label="Submit" />
+                <Button label="Submit" onClick={handleCreateEmployee} />
               </div>
             </form>
           </div>

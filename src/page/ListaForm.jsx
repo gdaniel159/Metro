@@ -4,10 +4,10 @@ import Orders from "../components/Orders";
 import Categories from "../components/Categories";
 import Products from "../components/Products";
 import { TabView, TabPanel } from "primereact/tabview";
+import EmployeeProvider from "../components/EmployeeProvider";
 import "../styles/main.css";
 
 export default function CreateForm() {
-
   return (
     <>
       <div className="container mx-5">
@@ -18,7 +18,9 @@ export default function CreateForm() {
           <div className="card">
             <TabView>
               <TabPanel header="Empleados">
-                <Employees />
+                <EmployeeProvider>
+                  <Employees />
+                </EmployeeProvider>
               </TabPanel>
               <TabPanel header="Customers">
                 <Customers />
