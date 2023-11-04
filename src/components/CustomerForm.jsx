@@ -5,23 +5,24 @@ import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 
 export default function CustomerForm() {
+  const [value, setValue] = useState("");
+  const [selectedCity, setSelectedCity] = useState(null);
 
-    const [value, setValue] = useState("");
-    const [selectedCity, setSelectedCity] = useState(null);
-  
-    const cities = [
-      { name: "New York", code: "NY" },
-      { name: "Rome", code: "RM" },
-      { name: "London", code: "LDN" },
-      { name: "Istanbul", code: "IST" },
-      { name: "Paris", code: "PRS" },
-    ];
-  
+  const cities = [
+    { name: "New York", code: "NY" },
+    { name: "Rome", code: "RM" },
+    { name: "London", code: "LDN" },
+    { name: "Istanbul", code: "IST" },
+    { name: "Paris", code: "PRS" },
+  ];
+
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12 form-container" style={{minHeight:"400px"}}>
+          <div
+            className="col-md-12"
+          >
             <form action="" method="">
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">

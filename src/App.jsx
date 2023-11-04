@@ -11,6 +11,7 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Admin from "./page/Admin";
 import Carrito from "./page/Carrito";
+import Register from "./page/Register";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/hogar_bazar" element={<HogarBazar />} />
           <Route path="/intranet/admin" element={<Admin />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>

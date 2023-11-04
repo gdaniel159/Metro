@@ -184,6 +184,13 @@ export default function NavBar() {
                       />
                       <small id="password-help">Ingresa tu contraseña.</small>
                     </div>
+                    <div className="flex justify-content-end gap-2 mb-3">
+                      <small>
+                        <Link to="/register">
+                          ¿Aun no tienes cuenta?
+                        </Link>
+                      </small>
+                    </div>
                     <Button
                       label="Iniciar Sesion"
                       className="btn btn-primary mb-3 form-control"
