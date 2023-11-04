@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-
 import { createCategories } from "../api/api";
 import { Toast } from "primereact/toast";
 
@@ -92,8 +91,9 @@ export default function CategoriaForm() {
               </div>
 
               <div className="card flex justify-content-center mb-5 mt-5">
-                <Button label="Submit" />
+                <Button label="Submit" onClick={handleCreateCategoria} />
               </div>
+              
             </form>
           </div>
         </div>
