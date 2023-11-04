@@ -7,13 +7,12 @@ import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 import EmployeesUpdate from "./EmployeesUpdate";
 import { deleteEmployees } from "../api/api";
-import { EmployeeContext } from "./EmployeeProvider";
-
+import { MainContext } from "./MainProvider";
 
 export default function Employees() {
   const toast = useRef(null);
 
-  const { setSelectedEmployeeId } = useContext(EmployeeContext);
+  const { setSelectedEmployeeId } = useContext(MainContext);
 
   const [visible, setVisible] = useState(false);
 
@@ -101,22 +100,22 @@ export default function Employees() {
                         setSelectedEmployeeId(rowData.id), setVisible(true);
                       }}
                     />
-                    <Dialog
-                      header="Actualizar Empleados"
-                      visible={visible}
-                      style={{ width: "50vw" }}
-                      onHide={() => {
-                        setVisible(false);
-                        setSelectedEmployeeId(null);
-                      }}
-                    >
-                      <EmployeesUpdate />
-                    </Dialog>
                   </>
                 )}
                 className="text-center"
               />
             </DataTable>
+            <Dialog
+              header="Actualizar Empleados"
+              visible={visible}
+              style={{ width: "50vw" }}
+              onHide={() => {
+                setVisible(false);
+                setSelectedEmployeeId(null);
+              }}
+            >
+              <EmployeesUpdate />
+            </Dialog>
           </div>
         </div>
       </div>

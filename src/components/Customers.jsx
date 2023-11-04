@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Toast } from "primereact/toast";
@@ -7,9 +7,12 @@ import { Dialog } from "primereact/dialog";
 import CustomerUpdate from "./CustomerUpdate";
 import { getCustomers } from "../api/api";
 import { deleteCustomers } from "../api/api";
+import { MainContext } from "./MainProvider";
 
 export default function Customers() {
   const toast = useRef(null);
+
+  const { setSelectedCustomerId } = useContext(MainContext);
 
   const [visible, setVisible] = useState(false);
 
@@ -52,23 +55,6 @@ export default function Customers() {
     }
   };
 
-  const footerContent = (
-    <div>
-      <Button
-        label="No"
-        icon="pi pi-times"
-        onClick={() => setVisible(false)}
-        className="p-button-text"
-      />
-      <Button
-        label="Yes"
-        icon="pi pi-check"
-        onClick={() => setVisible(false)}
-        autoFocus
-      />
-    </div>
-  );
-
   return (
     <>
       <div className="container">
@@ -100,22 +86,26 @@ export default function Customers() {
                       label="Editar"
                       icon="pi pi-pencil"
                       className="p-button-warning w-100 mt-2"
-                      onClick={() => setVisible(true)}
+                      onClick={() => {
+                        setSelectedCustomerId(rowData.id), setVisible(true);
+                      }}
                     />
-                    <Dialog
-                      header="Actualizar Clientes"
-                      visible={visible}
-                      style={{ width: "50vw" }}
-                      onHide={() => setVisible(false)}
-                      footer={footerContent}
-                    >
-                      <CustomerUpdate />
-                    </Dialog>
                   </>
                 )}
                 className="text-center"
               />
             </DataTable>
+            <Dialog
+              header="Actualizar Clientes"
+              visible={visible}
+              style={{ width: "50vw" }}
+              onHide={() => {
+                setVisible(false);
+                setSelectedCustomerId(null)
+              }}
+            >
+              <CustomerUpdate />
+            </Dialog>
           </div>
         </div>
       </div>

@@ -2,14 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-import { useEmployeeContext } from "./EmployeeProvider";
+import { useMainContext } from "./MainProvider";
 import { getEmployeesxID } from "../api/api";
 import { updateEmployees } from "../api/api";
 
 export default function EmployeesUpdate() {
   const toast = useRef(null);
 
-  const { selectedEmployeeId, employeeData } = useEmployeeContext();
+  const { selectedEmployeeId, employeeData } = useMainContext();
 
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -26,13 +26,6 @@ export default function EmployeesUpdate() {
   const [notas, setNotas] = useState("");
   const [reportes, setReportes] = useState("");
   const [codigoPostal, setCodigoPostal] = useState("");
-
-  const [setSelectedFile] = useState(null);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-  };
 
   const updateEmployee = async (data) => {
     try {
@@ -83,7 +76,7 @@ export default function EmployeesUpdate() {
 
   useEffect(() => {
     loadEmployee();
-  }, [selectedEmployeeId]);
+  }, []);
 
   const loadEmployee = async () => {
     try {
@@ -104,12 +97,14 @@ export default function EmployeesUpdate() {
       setReportes(response.data.reportes);
       setCodigoPostal(response.data.codigo_postal);
     } catch (error) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "No se pudo cargar el empleado",
-        life: 3000,
-      });
+      if (toast.current) {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "No se pudo cargar el empleado",
+          life: 3000,
+        });
+      }
     }
   };
 
@@ -254,15 +249,7 @@ export default function EmployeesUpdate() {
                 <label htmlFor="foto" className="mb-2">
                   Foto:
                 </label>
-                <span className="p-float-label">
-                  <input
-                    type="file"
-                    id="foto"
-                    name="foto"
-                    accept="image/*"
-                    onChange={(e) => handleFileUpload(e)}
-                  />
-                </span>
+                <span className="p-float-label"></span>
               </div>
 
               <div className="card flex justify-content-center mb-5 mt-5">
@@ -289,15 +276,7 @@ export default function EmployeesUpdate() {
                 <label htmlFor="foto_path" className="mb-2">
                   Foto Path:
                 </label>
-                <span className="p-float-label">
-                  <input
-                    type="file"
-                    id="foto_path"
-                    name="foto_path"
-                    accept="image/*"
-                    onChange={(e) => handleFileUpload(e)}
-                  />
-                </span>
+                <span className="p-float-label"></span>
               </div>
 
               <div className="card flex justify-content-center mb-5 mt-5">
