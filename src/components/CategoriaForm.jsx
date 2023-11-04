@@ -80,6 +80,7 @@ export default function CategoriaForm() {
               <div className="card flex justify-content-center mb-5 mt-5">
                 <Button label="Submit" onClick={handleCreateCategoria} />
               </div>
+              
             </form>
           </div>
         </div>
