@@ -38,14 +38,14 @@ export function EmployeesForm() {
       toast.current.show({
         severity: "success",
         summary: "Success",
-        detail: "Empleado Actualizado correctamente",
+        detail: "Empleado Creado correctamente",
         life: 3000,
       });
     } catch (error) {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "No se pudo actualizar los registros",
+        detail: "No se pudo crear los registros",
         life: 3000,
       });
     }

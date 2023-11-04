@@ -8,7 +8,7 @@ import { Toast } from "primereact/toast";
 export default function CategoriaForm() {
   const [nombre_categoria, setNombre_categoria] = useState("");
   const [descripcion, setdescripcion] = useState("");
-  const [foto, setfoto] = useState("");
+  // const [foto, setfoto] = useState("");
 
   const [setSelectedFile] = useState(null);
 
