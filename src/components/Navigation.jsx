@@ -42,9 +42,8 @@ export default function NavBar() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-
       const response = await login(formData);
-      
+
       if (
         response.data.message === "Inicio de sesión exitoso" ||
         response.data.verification_code === 1
@@ -53,7 +52,6 @@ export default function NavBar() {
       } else {
         console.log("Credenciales Incorrectas");
       }
-    
     } catch (error) {
       showError();
     }
@@ -136,10 +134,10 @@ export default function NavBar() {
                 </a>
               </div>
               <div>
-                <a href="" className="mx-4 d-flex flex-column">
+                <Link to="/carrito" className="mx-4 d-flex flex-column">
                   <i className="pi pi-shopping-cart" />
                   <small>Carrito</small>
-                </a>
+                </Link>
               </div>
             </li>
           </ul>

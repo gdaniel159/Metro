@@ -1,21 +1,25 @@
 import { Carousel } from "primereact/carousel";
 import PropTypes from "prop-types";
 import "../styles/main.css";
-
 export default function CardProduct({
   imgSrcSecction,
   descProductSection,
   product,
 }) {
+  const baseUrl = "http://localhost:8000";
+
   const productTemplate = (product) => {
+
+    const imageUrl = `${baseUrl}/${product.photo_path}`;
+    
     return (
       <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
         <div className="mb-3">
-          <img src={product.src} alt="product" className="w-6 shadow-2" />
+          <img src={imageUrl} alt="product" className="w-6 shadow-2" />
         </div>
         <div>
-          <p className="mb-1 text-muted">{product.name}</p>
-          <h6 className="mt-0 mb-3">S/. {product.price}</h6>
+          <p className="mb-1 text-muted">{product.nombre_producto}</p>
+          <h6 className="mt-0 mb-3">S/. {product.precio_unidad}</h6>
           <button className="btn btn-warning form-control">Agregar</button>
         </div>
       </div>

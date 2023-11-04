@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from "react";
 import tv from "../assets/images/tv.jpg";
 import com from "../assets/images/com-tel.jpg";
 import linea from "../assets/images/refri-coc.jpg";
@@ -5,72 +6,72 @@ import electro from "../assets/images/elec.jpg";
 import pc from "../assets/images/pc_icon.svg";
 import tel from "../assets/images/phone_icon.svg";
 import wash from "../assets/images/wash_icon.svg";
-import tv_product from "../assets/images/products/tv.jpg";
-import smarthphone from "../assets/images/products/smarthphone.png";
-import lavadora from "../assets/images/products/lavadora.jpg";
 import CardProduct from "../components/CardProduct";
+import { getProductsByCategory } from "../api/api";
+import { Toast } from "primereact/toast";
 import "../styles/electrohogar.css";
 
 export default function ElectroTecnologia() {
-  const productsPC = [
-    {
-      src: tv_product,
-      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
-      price: "949.00",
-    },
-    {
-      src: tv_product,
-      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
-      price: "949.00",
-    },
-    {
-      src: tv_product,
-      name: "Televisor Hisense Smart TV 55'' UHD 4K 55A6K",
-      price: "949.00",
-    },
-  ];
+  const toast = useRef(null);
 
-  const productsSmart = [
-    {
-      src: smarthphone,
-      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
-      price: "399.00",
-    },
-    {
-      src: smarthphone,
-      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
-      price: "399.00",
-    },
-    {
-      src: smarthphone,
-      name: "Smartphone Samsung Galaxy A04 3Gb + 32Gb",
-      price: "399.00",
-    },
-  ];
+  const [productsPC, setProductsPC] = useState([]);
+  const [productsSmart, setProductsSmart] = useState([]);
+  const [productsWash, setProductsWash] = useState([]);
 
-  const productsWash = [
-    {
-      src: lavadora,
-      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
-      price: "1899.00",
-    },
-    {
-      src: lavadora,
-      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
-      price: "1899.00",
-    },
-    {
-      src: lavadora,
-      name: "Lavadora LG Carga Superior 19Kg WT19BSS6H",
-      price: "1899.00",
-    },
-  ];
+  useEffect(() => {
+    loadProductsPC();
+    loadProductsSmart();
+    loadProductsWash();
+  }, []);
+
+  const loadProductsPC = async () => {
+    try {
+      const response = await getProductsByCategory(1);
+      setProductsPC(response.data);
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "No se pudieron cargar los productos",
+        life: 3000,
+      });
+    }
+  };
+
+  const loadProductsSmart = async () => {
+    try {
+      const response = await getProductsByCategory(2);
+      setProductsSmart(response.data);
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "No se pudieron cargar los productos",
+        life: 3000,
+      });
+    }
+  };
+
+  const loadProductsWash = async () => {
+    try {
+      const response = await getProductsByCategory(3);
+      setProductsWash(response.data);
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "No se pudieron cargar los productos",
+        life: 3000,
+      });
+    }
+  };
 
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-md-12 section-electro">
+            <Toast ref={toast} />
             <div className="col-md-3 electro">
               <div className="img-elec">
                 <img src={tv} alt="" className="img-fluid" />
