@@ -2,15 +2,49 @@ import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 
+import { createCategories } from "../api/api";
+import { Toast } from "primereact/toast";
+
 export default function CategoriaForm() {
-  const [value, setValue] = useState("");
-  const [value1, setValue1] = useState("");
+  const [nombre_categoria, setNombre_categoria] = useState("");
+  const [descripcion, setdescripcion] = useState("");
+  const [foto, setfoto] = useState("");
 
   const [setSelectedFile] = useState(null);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
+  };
+
+  const createCategories = async (data) => {
+    try{
+      const response = await createCategories(data);
+      console.log(response);
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail:"Categoria Creada correctamente",
+        life: 3000,
+      });
+    } catch(error){
+      toast.current.show({
+        severity:"error",
+        summary:"Error",
+        detail:"No se puedo crear la categoria correctamente"
+      });
+    }
+  }
+  
+  const handleCreateCategoria = (e)=>{
+    e.preventDefault();
+    const formData={
+      nombre_categoria,
+      descripcion,
+      foto
+    };
+    console.log(formData);
+    createCategories(formData);
   };
 
   return (
@@ -26,8 +60,8 @@ export default function CategoriaForm() {
                 <span className="p-float-label">
                   <InputText
                     id="nombre_categoria"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={nombre_categoria}
+                    onChange={(e) => setNombre_categoria(e.target.value)}
                   />
                   <label htmlFor="nombre_categoria">Nombre Categoría</label>
                 </span>
@@ -36,8 +70,8 @@ export default function CategoriaForm() {
                 <span className="p-float-label">
                   <InputText
                     id="descripcion"
-                    value={value1}
-                    onChange={(e) => setValue1(e.target.value)}
+                    value={descripcion}
+                    onChange={(e) => setdescripcion(e.target.value)}
                   />
                   <label htmlFor="descripcion">Descripción</label>
                 </span>
