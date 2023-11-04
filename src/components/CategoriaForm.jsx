@@ -1,50 +1,42 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-
 import { createCategories } from "../api/api";
 import { Toast } from "primereact/toast";
 
 export default function CategoriaForm() {
+  const toast = useRef(null);
+
   const [nombre_categoria, setNombre_categoria] = useState("");
   const [descripcion, setdescripcion] = useState("");
-  const [foto, setfoto] = useState("");
 
-  const [setSelectedFile] = useState(null);
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-  };
-
-  const createCategories = async (data) => {
-    try{
+  const createCategoriesIntegration = async (data) => {
+    try {
       const response = await createCategories(data);
       console.log(response);
       toast.current.show({
         severity: "success",
         summary: "Success",
-        detail:"Categoria Creada correctamente",
+        detail: "Categoria Creada correctamente",
         life: 3000,
       });
-    } catch(error){
+    } catch (error) {
       toast.current.show({
-        severity:"error",
-        summary:"Error",
-        detail:"No se puedo crear la categoria correctamente"
+        severity: "error",
+        summary: "Error",
+        detail: "No se puedo crear la categoria correctamente",
       });
     }
-  }
-  
-  const handleCreateCategoria = (e)=>{
+  };
+
+  const handleCreateCategoria = (e) => {
     e.preventDefault();
-    const formData={
+    const formData = {
       nombre_categoria,
       descripcion,
-      foto
     };
     console.log(formData);
-    createCategories(formData);
+    createCategoriesIntegration(formData);
   };
 
   return (
@@ -56,6 +48,7 @@ export default function CategoriaForm() {
             style={{ minHeight: "400px" }}
           >
             <form action="" method="">
+              <Toast ref={toast} />
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
@@ -81,18 +74,11 @@ export default function CategoriaForm() {
                   Foto:
                 </label>
                 <span className="p-float-label">
-                  <input
-                    type="file"
-                    id="foto"
-                    name="foto"
-                    accept="image/*" // Esto limita la selección a archivos de imagen
-                    onChange={(e) => handleFileUpload(e)}
-                  />
+                  <input type="file" id="foto" name="foto" accept="image/*" />
                 </span>
               </div>
-
               <div className="card flex justify-content-center mb-5 mt-5">
-                <Button label="Submit" />
+                <Button label="Submit" onClick={handleCreateCategoria} />
               </div>
             </form>
           </div>

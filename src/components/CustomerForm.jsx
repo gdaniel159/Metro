@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
-import { Button } from "primereact/button";
+// import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 
 export default function CustomerForm() {
@@ -126,10 +126,9 @@ export default function CustomerForm() {
                   <label htmlFor="fax">Fax</label>
                 </span>
               </div>
-
-              <div className="card flex justify-content-center mb-5 mt-5">
+              {/* <div className="card flex justify-content-center mb-5 mt-5">
                 <Button label="Submit" />
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

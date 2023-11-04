@@ -1,14 +1,57 @@
 import { Carousel } from "primereact/carousel";
 import PropTypes from "prop-types";
 import { Dialog } from "primereact/dialog";
+import { Toast } from "primereact/toast";
 import Carrito from "../page/Carrito";
+import { createOrders } from "../api/api";
 import "../styles/main.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Button } from "primereact/button";
 export default function CardProduct({
   imgSrcSecction,
   descProductSection,
   product,
 }) {
+  const toast = useRef(null);
+
+  const createOrder = async (data) => {
+    try {
+      const response = await createOrders(data);
+      console.log(response);
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Empleado Actualizado correctamente",
+        life: 3000,
+      });
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "No se pudo actualizar los registros",
+        life: 3000,
+      });
+    }
+  };
+
+  const handleCreateOrder = (e) => {
+    e.preventDefault();
+    const data = {
+      fecha_orden: "2023-11-02",
+      fecha_requerimiento: "2023-11-02",
+      fecha_envio: "2023-11-02",
+      via_envio: "Web",
+      transporte: "Motorizado",
+      nombre_envio: "Envio 1",
+      envio_direccion: "Direccion 1",
+      envio_region: "Lima",
+      envio_codigo_postal: "15313",
+      envio_pais: "PE",
+    };
+    console.log(data);
+    createOrder(data);
+  };
+
   const baseUrl = "http://localhost:8000";
 
   const [visibleCarrito, setVisibleCarrito] = useState(false);
@@ -18,19 +61,21 @@ export default function CardProduct({
 
     return (
       <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
+        <Toast ref={toast} />
         <div className="mb-3">
           <img src={imageUrl} alt="product" className="w-6 shadow-2" />
         </div>
         <div>
           <p className="mb-1 text-muted">{product.nombre_producto}</p>
           <h6 className="mt-0 mb-3">S/. {product.precio_unidad}</h6>
-          <button className="btn btn-warning form-control"
-            onClick={() => {
+          <Button
+            label="Agregar"
+            className="btn btn-warning form-control"
+            onClick={(e) => {
               setVisibleCarrito(true);
+              handleCreateOrder(e);
             }}
-          >
-            Agregar
-          </button>
+          />
         </div>
         <Dialog
           header="Carrito de compras"
