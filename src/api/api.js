@@ -62,6 +62,10 @@ export const createOrders = (newOrders) => {
   return metroAPI.post(`orders/create`, newOrders);
 };
 
+export const createOrdersDetail = (newOrdersDetail) => {
+  return metroAPI.post(`orders_details/create`, newOrdersDetail);
+}
+
 export const createProducts = (newProducts) => {
   return metroAPI.post(`products/create`, newProducts);
 };

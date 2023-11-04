@@ -2,19 +2,19 @@ import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 // import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
+// import { Dropdown } from "primereact/dropdown";
 
 export default function CustomerForm() {
   const [value, setValue] = useState("");
-  const [selectedCity, setSelectedCity] = useState(null);
+  // const [selectedCity, setSelectedCity] = useState(null);
 
-  const cities = [
-    { name: "New York", code: "NY" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
-  ];
+  // const cities = [
+  //   { name: "New York", code: "NY" },
+  //   { name: "Rome", code: "RM" },
+  //   { name: "London", code: "LDN" },
+  //   { name: "Istanbul", code: "IST" },
+  //   { name: "Paris", code: "PRS" },
+  // ];
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function CustomerForm() {
             className="col-md-12"
           >
             <form action="" method="">
-              <div className="card flex justify-content-center mb-5 mt-5">
+              {/* <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
                     id="nombre_compania"
@@ -33,7 +33,7 @@ export default function CustomerForm() {
                   />
                   <label htmlFor="nombre_compania">Nombre Compañía</label>
                 </span>
-              </div>
+              </div> */}
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
@@ -64,7 +64,7 @@ export default function CustomerForm() {
                   <label htmlFor="direccion">Dirección</label>
                 </span>
               </div>
-              <div className="card flex justify-content-center mb-5 mt-5">
+              {/* <div className="card flex justify-content-center mb-5 mt-5">
                 <Dropdown
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.value)}
@@ -72,7 +72,7 @@ export default function CustomerForm() {
                   optionLabel="name"
                   placeholder="Select a City"
                 />
-              </div>
+              </div> */}
               <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputText
@@ -115,7 +115,7 @@ export default function CustomerForm() {
                   <label htmlFor="number-input">Télefono</label>
                 </span>
               </div>
-              <div className="card flex justify-content-center mb-5 mt-5">
+              {/* <div className="card flex justify-content-center mb-5 mt-5">
                 <span className="p-float-label">
                   <InputNumber
                     id="fax"
@@ -125,7 +125,7 @@ export default function CustomerForm() {
                   />
                   <label htmlFor="fax">Fax</label>
                 </span>
-              </div>
+              </div> */}
               {/* <div className="card flex justify-content-center mb-5 mt-5">
                 <Button label="Submit" />
               </div> */}
