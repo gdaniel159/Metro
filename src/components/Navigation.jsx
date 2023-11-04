@@ -7,11 +7,17 @@ import { Button } from "primereact/button";
 import { login } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
+import carrito from "../assets/images/carrito.svg";
 import "../styles/navbar.css";
+import "../styles/Navigation.css";
 import "../styles/login.css";
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const [visibleRight, setVisibleRight] = useState(false);
+  const ocultarSidebar = () => {
+    setVisibleRight(false); // Cambia el estado a falso para ocultar el Sidebar
+  };
 
   const toast = useRef(null);
 
@@ -42,9 +48,8 @@ export default function NavBar() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-
       const response = await login(formData);
-      
+
       if (
         response.data.message === "Inicio de sesión exitoso" ||
         response.data.verification_code === 1
@@ -53,7 +58,6 @@ export default function NavBar() {
       } else {
         console.log("Credenciales Incorrectas");
       }
-    
     } catch (error) {
       showError();
     }
@@ -62,6 +66,11 @@ export default function NavBar() {
   const showSidebar = (e) => {
     e.preventDefault();
     setVisible(true);
+  };
+
+  const showSiderCarrito = (e) => {
+    e.preventDefault();
+    setVisibleRight(true);
   };
 
   return (
@@ -136,7 +145,11 @@ export default function NavBar() {
                 </a>
               </div>
               <div>
-                <a href="" className="mx-4 d-flex flex-column">
+                <a
+                  href=""
+                  className="mx-4 d-flex flex-column"
+                  onClick={showSiderCarrito}
+                >
                   <i className="pi pi-shopping-cart" />
                   <small>Carrito</small>
                 </a>
@@ -195,6 +208,31 @@ export default function NavBar() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </Sidebar>
+      {/* Carrito */}
+      <Sidebar
+        visible={visibleRight}
+        position="right"
+        onHide={() => setVisibleRight(false)}
+      >
+        <h3 className="tit_carrito t-heading-3 mv2 ph4 ph6-l">Carrito</h3>
+        <div className="container_carrito">
+          <div className="carrito">
+            <div className="carrito_img ">
+              <img className="img_car" src={carrito} alt="" />
+            </div>
+            <div className="">
+              <p className="subt">Su carrito esta vacío</p>
+            </div>
+          </div>
+          <div className="button_container tl flex ">
+            <Button
+              className="buton_car"
+              label="Seguir Comprando"
+              onClick={ocultarSidebar}
+            />
           </div>
         </div>
       </Sidebar>
